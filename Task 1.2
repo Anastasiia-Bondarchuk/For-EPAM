@@ -1,0 +1,40 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input your number: ");
+        int numb = scanner.nextInt();
+        int a = numb/100;
+        int c = numb%10;
+        int b = (numb%100-c)/10;
+        int temp;
+        if(numb>99 && numb<1000)
+        {
+            System.out.printf("%d, %d, %d", a,b,c);
+            if(c>b)
+            {
+                temp = c;
+                c=b;
+                b=temp;
+            }
+            if(b>a)
+            {
+                temp = a;
+                a=b;
+                b=temp;
+            }
+            if(c>b)
+            {
+                temp = c;
+                c=b;
+                b=temp;
+            }
+            System.out.printf("\n%d, %d, %d", a,b,c);
+        }
+        else System.out.printf("Invalid number. Please enter a number in the array from 100 to 1000");
+    }
+}
