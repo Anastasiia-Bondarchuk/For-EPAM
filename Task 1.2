@@ -11,29 +11,31 @@ public class Main {
         int a = numb/100;
         int c = numb%10;
         int b = (numb%100-c)/10;
-        int temp;
+
         if(numb>99 && numb<1000)
         {
             System.out.printf("%d, %d, %d", a,b,c);
-            if(c>b)
-            {
-                temp = c;
-                c=b;
-                b=temp;
+            int []array = new int[]{a,b,c};
+            boolean sorted=false;
+            int temp;
+            while(!sorted) {
+                sorted = true;
+                for (int i = 0; i < array.length - 1; i++)
+                {
+                    if (array[i] < array[i + 1])
+                    {
+                        temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                        sorted = false;
+                    }
+                }
             }
-            if(b>a)
+            System.out.printf("\n");
+            for (int i = 0; i < array.length; i++)
             {
-                temp = a;
-                a=b;
-                b=temp;
+                System.out.printf("%d, ", array[i]);
             }
-            if(c>b)
-            {
-                temp = c;
-                c=b;
-                b=temp;
-            }
-            System.out.printf("\n%d, %d, %d", a,b,c);
         }
         else System.out.printf("Invalid number. Please enter a number in the array from 100 to 1000");
     }
