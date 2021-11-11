@@ -1,0 +1,86 @@
+package com.company;
+import java.util.Scanner;
+
+public enum SortOrder {
+    ASCENDING { @Override public String toString() { return "Ascending"; }},
+    DESCENDING { @Override public String toString() { return "Descending"; }},
+    UNSORTED { @Override public String toString() { return "Unsorted"; }}
+} //в окремому файлі
+
+public class Main {
+    public static int indexer(int []arr, int n)
+    {
+        int count=0;
+        boolean check=false;
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (n==arr[i])
+            {
+                check=true;
+                break;
+            }
+            count++;
+        }
+        if(!(check))
+            return 0;
+        else return count;
+
+    }
+    public static void Transform(int []arr, int n)
+    {
+        if (IsSorted(arr).toString()==SortOrder.DESCENDING.toString())
+        {
+            for (int i = 0; i < arr.length; i++)
+            {
+                if (n==arr[i])
+                    arr[i]=arr[i]+indexer(arr, n);
+            }
+        }
+        else System.out.println("No change");
+
+    }
+
+    public static SortOrder IsSorted(int []arr)
+    {
+        int increase=0;
+        int decrease=0;
+        for (int i = 0; i < arr.length-1; i++)
+        {
+            if (arr[i]<=arr[i+1])
+                increase++;
+            if(arr[i]>=arr[i+1])
+                decrease--;
+        }
+        if(increase==arr.length-1)
+            return SortOrder.ASCENDING;
+        else if (decrease==arr.length*(-1)+1)
+            return SortOrder.DESCENDING;
+        else return SortOrder.UNSORTED;
+
+    }
+    public static void ArrOutput(int []arr)
+    {
+        for (int i=0;i<arr.length;i++)
+        {
+            System.out.printf("%d ", arr[i]);
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int n = in.nextInt();
+        int []arr = new int[n];
+        int j=arr.length;
+        for (int i=0;i<arr.length;i++)
+        {
+            arr[i]=j--;
+        }
+        ArrOutput(arr);
+        System.out.print("\nInput a number from array: ");
+        n = in.nextInt();
+        Transform(arr,n);
+        ArrOutput(arr);
+    }
+}
