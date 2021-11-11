@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main 
 {
    
-    public static int SumGeometricElements(int a, int d, int n)
+    public static int MultArithmeticElements(int a, int d, int n)
     {
         int multiply=a;
         for (int i = 1; i < n; i++)
@@ -32,6 +32,6 @@ public class Main
             System.out.printf(count==n? "= " : "* ");
             a=a+d;
         }
-        System.out.println(SumGeometricElements(temp, d, n));
+        System.out.println(MultArithmeticElements(temp, d, n));
     }
 }
