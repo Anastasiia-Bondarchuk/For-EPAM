@@ -1,0 +1,37 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main 
+{
+   
+    public static int SumGeometricElements(int a, int d, int n)
+    {
+        int multiply=a;
+        for (int i = 1; i < n; i++)
+        {
+            a=a+d;
+            multiply=a*multiply;
+        }
+        return multiply;
+    }
+     public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        System.out.print("Input a first number: ");
+        int a = in.nextInt();
+        int temp=a;
+        System.out.print("\nInput a first difference: ");
+        int d = in.nextInt();
+        System.out.print("\nInput amount of progression: ");
+        int n = in.nextInt();
+        int count=0;
+        for (int i = 1; i <= n; i++)
+        {
+            count++;
+            System.out.printf("%d ", a);
+            System.out.printf(count==n? "= " : "* ");
+            a=a+d;
+        }
+        System.out.println(SumGeometricElements(temp, d, n));
+    }
+}
